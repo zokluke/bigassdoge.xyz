@@ -1,0 +1,74 @@
+<html>
+    <head><title>chax script uploader</title>
+        <style>
+        body {background-color: black;}
+        #textheader {
+            font-family: "Lucida Console", "Courier New", monospace;
+            color: Chartreuse;
+            position: fixed;
+            bottom: 500;
+            right: 600;
+            width: 300px;
+            border: 4px solid chartreuse;
+        
+        }
+        #scriptsource {
+            font-family: "Lucida Console", "Courier New", monospace;
+            color: black;
+            position: fixed;
+            bottom:400;
+            right:670;
+        }
+        #scriptname {
+            font-family: "Lucida Console", "Courier New", monospace;
+            color: black;
+            position: fixed;
+            bottom:420;
+            right:670;
+        }
+        #robloxuser {
+            font-family: "Lucida Console", "Courier New", monospace;
+            color: black;
+            position: fixed;
+            bottom:380;
+            right:670;
+        }
+        #upload {
+            position: fixed;
+            bottom:350;
+            right:720; 
+        }
+        
+    </style>
+    
+    </head>
+    <label for="scriptsource">Script source:</label>
+    <label for="scriptname">Script name:</label>
+    <label for="robloxuser">Your Roblox Username:</label>
+    <h1 id="textheader">Script Uploader</h1>
+    <br>
+    <br>
+    <input type="text" name="scriptsource" id="scriptsource">
+    <input type="text" name="scriptname" id="scriptname">
+    <input type="text" name="robloxuser" id="robloxuser">
+    <script>
+        document.getElementById("scriptsource").value = "Put require here";
+        document.getElementById("scriptname").value = "Put script name here";
+        document.getElementById("robloxuser").value = "Put roblox username here";
+    </script>
+    <br>
+    <button id="upload" onclick="runscript()">Upload</button>
+    <script>
+        function runscript() {
+            const scriptsource = document.getElementById("scriptsource").value
+            const scriptname = document.getElementById("scriptname").value
+            const robloxuser = document.getElementById("robloxuser").value
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "rest.php?name="+scriptname+"&script="+scriptsource+"&uploader="+robloxuser, true);
+            xhr.send();
+        }
+    </script>
+
+
+
+</html>
